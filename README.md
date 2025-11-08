@@ -40,7 +40,7 @@ This backend service provides Satellite Data (think Hubble) and can do the follo
 
 ## Exercise Tasks
 
-### Task 1: Get the Docker Image Running
+### Task 1: Run the Satellite Service Docker Image Locally
 
 **Objective**: Run the Docker container locally. The container will fail to start initially
 due to configuration errors. You need to debug and fix the startup issues.
@@ -56,8 +56,6 @@ due to configuration errors. You need to debug and fix the startup issues.
 - Identify why the container fails to start
 - Fix the issue(s) and get the service running
 - Verify the service is accessible at `http://localhost:8080`
-
-*note - service code changes are not required*
 
 **Hints**:
 - Look at container logs
@@ -102,6 +100,7 @@ due to configuration errors. You need to debug and fix the startup issues.
 ## Deliverables
 
 Please provide a **public** github repo url with the following sections.
+
 *email your Jasper recruiter with the github link*
 
 1. **Working Docker setup** - Documentation on how to run the Docker image with the correct configuration
@@ -109,7 +108,7 @@ Please provide a **public** github repo url with the following sections.
    - `Chart.yaml`
    - `values.yaml`
    - `templates/` directory with all necessary Kubernetes manifests
-3. **Documentation** - A brief document explaining:
+3. **Documentation** - A brief markdown document explaining:
    - How to run the Docker image with the correct configuration
    - How to deploy using Helm
    - How to verify everything is working
