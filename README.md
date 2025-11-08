@@ -35,8 +35,9 @@ This backend service provides Satellite Data (think Hubble) and can do the follo
 
 ## The Satellite Service
 
-- Listens on port `8080` for GET requests (for example `curl localhost:8080/`)
-- Listens for GET requests on `/satellite/status`
+- Exposes the endpoints 
+  - GET `/`
+  - GET `/satellite/status`
 
 ## Exercise Tasks
 
@@ -49,16 +50,13 @@ due to configuration errors. You need to debug and fix the startup issues.
 - Clone this repository locally
   - `cd devops-takehome-public`
   - Mac arm64: `docker load -i devops-takehome-arm64.tar`
-  - Windows/Linux: `docker load -i devops-takehome-arm64.tar`
+  - Windows/Linux: `docker load -i devops-takehome-amd64.tar`
 - Run the Docker container
   - Mac arm64: `docker run satellite-server:arm64`
   - Windows/Linux: `docker run satellite-server:amd64`
 - Identify why the container fails to start
 - Fix the issue(s) and get the service running
 - Verify the service is accessible at `http://localhost:8080`
-
-**Hints**:
-- Look at container logs
 
 ### Task 2: Deploy to Kubernetes with Helm
 
