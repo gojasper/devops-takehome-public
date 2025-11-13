@@ -46,11 +46,14 @@ This backend service provides Satellite Data (think Hubble) and can do the follo
 **Objective**: Run the Docker container locally. The container will fail to start initially
 due to configuration errors. You need to debug and fix the startup issues.
 
-**Requirements**:
+**Setup**:
 - Clone this repository locally
   - `cd devops-takehome-public`
+- Load the docker image into your local registry
   - Mac arm64: `docker load -i devops-takehome-arm64.tar`
   - Windows/Linux: `docker load -i devops-takehome-amd64.tar`
+
+**Requirements**
 - Run the Docker container
   - Mac arm64: `docker run satellite-server:arm64`
   - Windows/Linux: `docker run satellite-server:amd64`
@@ -62,19 +65,21 @@ due to configuration errors. You need to debug and fix the startup issues.
 
 **Objective**: Deploy the satellite service to your local Kubernetes cluster using a Helm chart.
 
+**Setup**
+- Install Helm
+- Install a local k8s cluster (minikube, kind, k3d, or similar)
+
 **Requirements**:
 - Create a Helm chart for the satellite service
 - The chart should include:
   - Deployment with appropriate resource limits and requests
   - Service to expose the application
-  - Proper labels and selectors
   - Environment variables
 - Deploy the chart to your cluster
 - Verify the service is accessible within the cluster
 
 **Considerations**:
 - Use Kubernetes best practices
-- Make the configuration maintainable and extensible
 - Consider how you would handle different environments (dev, staging, prod)
 
 ### Task 3: Create a CronJob for Status Monitoring
@@ -88,7 +93,7 @@ due to configuration errors. You need to debug and fix the startup issues.
   - Log the response
   - (**Bonus**) Report Healthy or Unhealthy based on the different mirror statuses
 - Include the CronJob in your Helm chart
-- Verify the CronJob runs successfully and logs appear
+- Verify the CronJob runs successfully with expected logs
 
 **Considerations**:
 - How will the CronJob access the service?
@@ -97,21 +102,22 @@ due to configuration errors. You need to debug and fix the startup issues.
 
 ## Deliverables
 
-Please provide a **public** github repo url with the following sections.
+> [!IMPORTANT]
+> Please submit a **public** github repo url with the following deliverables in an email to your hiring manager. Thank you!
 
-*email your Jasper recruiter with the github link*
-
-1. **Working Docker setup** - Documentation on how to run the Docker image with the correct configuration
-2. **Helm chart** - Complete Helm chart in a `helm/` directory with:
-   - `Chart.yaml`
-   - `values.yaml`
-   - `templates/` directory with all necessary Kubernetes manifests
-3. **Documentation** - A brief markdown document explaining:
-   - How to run the Docker image with the correct configuration
-   - How to deploy using Helm
-   - How to verify everything is working
-   - Screenshots of the deployment in minikube and http response from the running pod
-   - Any additional functionality you added
+1. **Service Docker Container** Provide documentation on how to run the Satellite Service Docker container locally with the correct configuration.
+2. **Helm chart** Complete Helm chart in a `helm/` directory with:
+  - `Chart.yaml`
+  - `values.yaml`
+  - `templates/` directory with all necessary Kubernetes manifests
+3. **Documentation** A brief markdown document explaining:
+  - How to run the Docker image with the correct configuration
+  - How to deploy the service to k8s using Helm
+  - Testing/validation steps
+  - Screenshot of the Satellite service deployment in local k8s and healthy pods
+  - Screenshot of http response (on either endpoint) from the service running in k8s
+  - Screenshot of logs from your cronjob
+  - Any additional functionality you added
 
 ## Evaluation Criteria
 
@@ -121,12 +127,11 @@ We'll be evaluating:
 - **K8s proficiency**: Understanding of K8s resources, networking, and best practices
 - **Helm proficiency**: Chart structure, templating, and config management
 
-You can use your own creative judgement to expand upon each task if it would help to demonstrate a more thorough understanding of k8s, Helm, and Docker.
-
 ## Time Estimate
 
-This exercise should take less than 3 hours to complete.
+You **do not** need to spend more than 2 hours on this exercise. Get as far as you can. 
+We'll discuss this takehome exercise during your technical interview.
 
 ## Questions
 
-If you run into any issues preventing work on this take home exercise, reach out to us.
+Reach out to us if you run into any issues preventing work on this takehome exercise.
